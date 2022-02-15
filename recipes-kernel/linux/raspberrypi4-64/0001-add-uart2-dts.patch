@@ -1,0 +1,37 @@
+diff --git a/old_bcm2711-rpi-4-b.dts b/bcm2711-rpi-4-b.dts
+index 21b20e3..4daa962 100644
+--- a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
++++ b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+@@ -211,6 +211,12 @@
+ 	status = "okay";
+ };
+ 
++&uart2 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart2_gpio0>;
++	status = "okay";
++};
++
+ &vchiq {
+ 	interrupts = <GIC_SPI 34 IRQ_TYPE_LEVEL_HIGH>;
+ };
+@@ -240,6 +246,7 @@
+ 	aliases {
+ 		serial0 = &uart1;
+ 		serial1 = &uart0;
++		serial2 = &uart2;
+ 		mmc0 = &emmc2;
+ 		mmc1 = &mmcnr;
+ 		mmc2 = &sdhost;
+@@ -270,6 +277,11 @@
+ 	pinctrl-0 = <&uart1_pins>;
+ };
+ 
++&uart2 {
++	pinctrl-0 = <&uart2_pins>;
++	status = "okay";
++};
++
+ &spi0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&spi0_pins &spi0_cs_pins>;
